@@ -2,9 +2,9 @@
 
 #ifdef ZW_WINDOWS_PLATFORM
 	#if ZW_BUILD_DLL
-		#define ZW_API __declspec(dllexport)
+		#define ZEPHYR_API __declspec(dllexport)
 	#else
-		#define ZW_API __declspec(dllimport)
+		#define ZEPHYR_API __declspec(dllimport)
 	#endif
 #else
 	#error Zephyr only supports Windows.

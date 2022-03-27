@@ -4,7 +4,7 @@
 
 namespace Zephyr
 {
-	class ZW_API Game
+	class ZEPHYR_API Game
 	{
 	public:
 		Game();
