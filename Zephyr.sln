@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.14
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Zephyr", "Zephyr\Zephyr.vcxproj", "{D864DA43-3FBB-49A0-96B7-1CF3E3D089D6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{4FBB7435-C3AD-49E1-8BD5-C97AC5DEED1D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{47CBEE94-7A9A-48E2-8EE6-B59FFF7B2B8B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Zephyr", "Zephyr\Zephyr.vcxproj", "{D864DA43-3FBB-49A0-96B7-1CF3E3D089D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{D864DA43-3FBB-49A0-96B7-1CF3E3D089D6}.Debug|x64.Build.0 = Debug|x64
 		{D864DA43-3FBB-49A0-96B7-1CF3E3D089D6}.Release|x64.ActiveCfg = Release|x64
 		{D864DA43-3FBB-49A0-96B7-1CF3E3D089D6}.Release|x64.Build.0 = Release|x64
-		{47CBEE94-7A9A-48E2-8EE6-B59FFF7B2B8B}.Debug|x64.ActiveCfg = Debug|x64
-		{47CBEE94-7A9A-48E2-8EE6-B59FFF7B2B8B}.Debug|x64.Build.0 = Debug|x64
-		{47CBEE94-7A9A-48E2-8EE6-B59FFF7B2B8B}.Release|x64.ActiveCfg = Release|x64
-		{47CBEE94-7A9A-48E2-8EE6-B59FFF7B2B8B}.Release|x64.Build.0 = Release|x64
+		{4FBB7435-C3AD-49E1-8BD5-C97AC5DEED1D}.Debug|x64.ActiveCfg = Debug|x64
+		{4FBB7435-C3AD-49E1-8BD5-C97AC5DEED1D}.Debug|x64.Build.0 = Debug|x64
+		{4FBB7435-C3AD-49E1-8BD5-C97AC5DEED1D}.Release|x64.ActiveCfg = Release|x64
+		{4FBB7435-C3AD-49E1-8BD5-C97AC5DEED1D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
