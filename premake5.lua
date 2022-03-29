@@ -7,6 +7,12 @@ workspace "Zephyr"
 --Ex: "Windows-x64-Debug"
 outputdir = "%{cfg.system}-%{cfg.architecture}-%{cfg.buildcfg}"
 
+--Include directories
+IncludeDir = {}
+IncludeDir["GLFW"] = "Zephyr/vendor/GLFW/include"
+
+include "Zephyr/vendor/GLFW"
+
 --Project in Solution
 project "Zephyr"
 	location "Zephyr"
@@ -29,7 +35,14 @@ project "Zephyr"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	--Platform specifics

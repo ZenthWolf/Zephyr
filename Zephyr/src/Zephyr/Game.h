@@ -2,6 +2,7 @@
 
 #include "Core.h"
 #include "Events/Event.h"
+#include "Window.h"
 
 namespace Zephyr
 {
@@ -12,6 +13,9 @@ namespace Zephyr
 		virtual ~Game();
 
 		void Run();
+	private:
+		std::unique_ptr<Window> window;
+		bool running = true;
 	};
 
 	//CLIENT to define

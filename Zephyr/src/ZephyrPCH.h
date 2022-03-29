@@ -14,3 +14,6 @@
 #ifdef ZW_WINDOWS_PLATFORM
 	#include <Windows.h>
 #endif
+
+#include "Zephyr/Log.h"
+#include "Zephyr/Vec2.h"

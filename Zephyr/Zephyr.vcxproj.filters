@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Zephyr">
       <UniqueIdentifier>{272D32E1-13CF-5CB7-FC89-700BE8CAE307}</UniqueIdentifier>
     </Filter>
@@ -9,6 +12,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\WindowsWindow.h">
+      <Filter>Platform</Filter>
+    </ClInclude>
     <ClInclude Include="src\Zephyr.h" />
     <ClInclude Include="src\Zephyr\Core.h">
       <Filter>Zephyr</Filter>
@@ -46,9 +52,15 @@
     <ClInclude Include="src\Zephyr\Vec2.h">
       <Filter>Zephyr</Filter>
     </ClInclude>
+    <ClInclude Include="src\Zephyr\Window.h">
+      <Filter>Zephyr</Filter>
+    </ClInclude>
     <ClInclude Include="src\ZephyrPCH.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\WindowsWindow.cpp">
+      <Filter>Platform</Filter>
+    </ClCompile>
     <ClCompile Include="src\Zephyr\Game.cpp">
       <Filter>Zephyr</Filter>
     </ClCompile>
