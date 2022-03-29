@@ -25,7 +25,8 @@ project "Zephyr"
 
 	includedirs
 	{
-		"Zephyr/vendor/spdlog/include"
+		"%{prj.name/src",
+		"%{prj.name}/vendor/spdlog/include"
 	}
 
 	--Platform specifics

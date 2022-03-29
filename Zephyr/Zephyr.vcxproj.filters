@@ -4,6 +4,9 @@
     <Filter Include="Zephyr">
       <UniqueIdentifier>{272D32E1-13CF-5CB7-FC89-700BE8CAE307}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Zephyr\Events">
+      <UniqueIdentifier>{2BA7DAB0-9767-56E7-60A2-9F64CC219BC3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Zephyr.h" />
@@ -13,10 +16,34 @@
     <ClInclude Include="src\Zephyr\EntryPoint.h">
       <Filter>Zephyr</Filter>
     </ClInclude>
+    <ClInclude Include="src\Zephyr\Events\ApplicationEvents.h">
+      <Filter>Zephyr\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Zephyr\Events\Event.h">
+      <Filter>Zephyr\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Zephyr\Events\KeyEvent.h">
+      <Filter>Zephyr\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Zephyr\Events\MouseEvent.h">
+      <Filter>Zephyr\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Zephyr\Game.h">
       <Filter>Zephyr</Filter>
     </ClInclude>
+    <ClInclude Include="src\Zephyr\Keyboard.h">
+      <Filter>Zephyr</Filter>
+    </ClInclude>
     <ClInclude Include="src\Zephyr\Log.h">
+      <Filter>Zephyr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Zephyr\MainWindow.h">
+      <Filter>Zephyr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Zephyr\Mouse.h">
+      <Filter>Zephyr</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Zephyr\Vec2.h">
       <Filter>Zephyr</Filter>
     </ClInclude>
   </ItemGroup>
@@ -24,7 +51,16 @@
     <ClCompile Include="src\Zephyr\Game.cpp">
       <Filter>Zephyr</Filter>
     </ClCompile>
+    <ClCompile Include="src\Zephyr\Keyboard.cpp">
+      <Filter>Zephyr</Filter>
+    </ClCompile>
     <ClCompile Include="src\Zephyr\Log.cpp">
+      <Filter>Zephyr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Zephyr\MainWindow.cpp">
+      <Filter>Zephyr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Zephyr\Mouse.cpp">
       <Filter>Zephyr</Filter>
     </ClCompile>
   </ItemGroup>

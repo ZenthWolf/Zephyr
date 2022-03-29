@@ -4,8 +4,8 @@
 namespace Zephyr
 {
 
-	std::shared_ptr<spdlog::logger> Log::s_EngineLogger;
-	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
+	std::shared_ptr<spdlog::logger> Log::engineLogger;
+	std::shared_ptr<spdlog::logger> Log::clientLogger;
 
 	void Log::Init()
 	{
@@ -18,10 +18,10 @@ namespace Zephyr
 		//%$: end color range
 		spdlog::set_pattern("%^[%l] (%T) %n: %v%$");
 
-		s_EngineLogger = spdlog::stdout_color_mt("ZEPHYR");
-		s_EngineLogger->set_level(spdlog::level::trace);
+		engineLogger = spdlog::stdout_color_mt("ZEPHYR");
+		engineLogger->set_level(spdlog::level::trace);
 
-		s_ClientLogger = spdlog::stdout_color_mt("CLIENT");
-		s_ClientLogger->set_level(spdlog::level::trace);
+		clientLogger = spdlog::stdout_color_mt("CLIENT");
+		clientLogger->set_level(spdlog::level::trace);
 	}
 }
