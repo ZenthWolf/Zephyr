@@ -1,7 +1,8 @@
 #pragma once
 
+#include "ZephyrPCH.h"
 #include "Core.h"
-#include <functional>
+
 namespace Zephyr
 {
 	enum class EventType

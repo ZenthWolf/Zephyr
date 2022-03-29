@@ -46,6 +46,7 @@
     <ClInclude Include="src\Zephyr\Vec2.h">
       <Filter>Zephyr</Filter>
     </ClInclude>
+    <ClInclude Include="src\ZephyrPCH.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Zephyr\Game.cpp">
@@ -63,5 +64,6 @@
     <ClCompile Include="src\Zephyr\Mouse.cpp">
       <Filter>Zephyr</Filter>
     </ClCompile>
+    <ClCompile Include="src\ZephyrPCH.cpp" />
   </ItemGroup>
 </Project>

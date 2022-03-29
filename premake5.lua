@@ -17,6 +17,9 @@ project "Zephyr"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-obj/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "ZephyrPCH.h"
+	pchsource "Zephyr/src/ZephyrPCH.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -25,7 +28,7 @@ project "Zephyr"
 
 	includedirs
 	{
-		"%{prj.name/src",
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 

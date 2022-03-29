@@ -4,7 +4,6 @@
 
 #include "Core.h"
 #include "Events/MouseEvent.h"
-#include "Vec2.h"
 
 namespace Zephyr
 {

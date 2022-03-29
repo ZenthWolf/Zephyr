@@ -5,8 +5,6 @@
 #include "Events/ApplicationEvents.h"
 #include "Keyboard.h"
 #include "Mouse.h"
-#include "Vec2.h"
-#include <sstream>
 
 namespace Zephyr
 {
