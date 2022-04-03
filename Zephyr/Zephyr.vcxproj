@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -109,6 +110,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -135,6 +137,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -159,6 +162,8 @@
     <ClInclude Include="src\Zephyr\Events\MouseEvent.h" />
     <ClInclude Include="src\Zephyr\Game.h" />
     <ClInclude Include="src\Zephyr\Keyboard.h" />
+    <ClInclude Include="src\Zephyr\Layer.h" />
+    <ClInclude Include="src\Zephyr\LayerStack.h" />
     <ClInclude Include="src\Zephyr\Log.h" />
     <ClInclude Include="src\Zephyr\MainWindow.h" />
     <ClInclude Include="src\Zephyr\Mouse.h" />
@@ -170,6 +175,8 @@
     <ClCompile Include="src\Platform\WindowsWindow.cpp" />
     <ClCompile Include="src\Zephyr\Game.cpp" />
     <ClCompile Include="src\Zephyr\Keyboard.cpp" />
+    <ClCompile Include="src\Zephyr\Layer.cpp" />
+    <ClCompile Include="src\Zephyr\LayerStack.cpp" />
     <ClCompile Include="src\Zephyr\Log.cpp" />
     <ClCompile Include="src\Zephyr\MainWindow.cpp" />
     <ClCompile Include="src\Zephyr\Mouse.cpp" />

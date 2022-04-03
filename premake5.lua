@@ -69,14 +69,17 @@ project "Zephyr"
 	-- Use {cond1, cond2} for multiple filter conditions
 	filter "configurations:Debug"
 		defines "ZW_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
-		filter "configurations:Release"
+	filter "configurations:Release"
 		defines "ZW_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "ZW_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -121,12 +124,15 @@ project "Sandbox"
 	-- Use {cond1, cond2} for multiple filter conditions
 	filter "configurations:Debug"
 		defines "ZW_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
-		filter "configurations:Release"
+	filter "configurations:Release"
 		defines "ZW_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "ZW_DIST"
+		buildoptions "/MD"
 		optimize "On"

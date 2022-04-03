@@ -26,18 +26,25 @@ namespace Zephyr
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowClose>(BIND_EVENT_FN(Game::OnWindowClose));
 
+		for (auto it = layerStack.end(); it != layerStack.begin();)
+		{
+			(*--it)->OnEvent(e);
+			if (e.handled)
+				break;
+		}
+
 		ZW_ENGINE_INFO(e);
 	}
 
 	void Game::Run()
 	{
-		auto eW = WindowResize(Vec2<unsigned int>(1920, 1080));
-
-		ZW_TRACE(eW);
 		while (running)
 		{
 			glClearColor(.2f, .2f, .24f, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+			for (Layer* layer : layerStack)
+				layer->OnUpdate();
+
 			window->OnUpdate();
 		}
 	}
@@ -46,5 +53,29 @@ namespace Zephyr
 	{
 		running = false;
 		return true;
+	}
+
+	void Game::PushLayer(Layer* layer)
+	{
+		layerStack.PushLayer(layer);
+		layer->OnAttach();
+	}
+
+	void Game::PopLayer(Layer* layer)
+	{
+		layerStack.PopLayer(layer);
+		layer->OnDetach();
+	}
+
+	void Game::PushOverlay(Layer* overlay)
+	{
+		layerStack.PushOverlay(overlay);
+		overlay->OnAttach();
+	}
+
+	void Game::PopOverlay(Layer* overlay)
+	{
+		layerStack.PushOverlay(overlay);
+		overlay->OnDetach();
 	}
 }
