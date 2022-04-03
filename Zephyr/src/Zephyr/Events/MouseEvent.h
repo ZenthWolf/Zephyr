@@ -14,7 +14,7 @@ namespace Zephyr
 	class ZEPHYR_API MouseMove : public MouseEvent
 	{
 	public:
-		MouseMove(Vec2<int> pos)
+		MouseMove(Vec2<float> pos)
 			:pos(pos) {}
 
 		inline Vec2<float> GetPos() const

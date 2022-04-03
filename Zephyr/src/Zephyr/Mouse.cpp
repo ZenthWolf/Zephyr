@@ -5,7 +5,7 @@
 
 namespace Zephyr
 {
-	Vec2<int> Mouse::GetPos() const
+	Vec2<float> Mouse::GetPos() const
 	{
 		return pos;
 	}
@@ -128,7 +128,7 @@ namespace Zephyr
 		FlushWheel();
 	}
 
-	void Mouse::OnMouseMove(Vec2<int> pos)
+	void Mouse::OnMouseMove(Vec2<float> pos)
 	{
 		this->pos = pos;
 		moveBuffer.push(std::make_shared<MouseMove>(pos));

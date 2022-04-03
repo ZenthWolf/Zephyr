@@ -15,7 +15,7 @@ namespace Zephyr
 		Mouse(const Mouse&) = delete;
 		Mouse& operator=(const Mouse&) = delete;
 
-		Vec2<int> GetPos() const;
+		Vec2<float> GetPos() const;
 		int GetX() const;
 		int GetY() const;
 		Vec2<float> GetWheel() const;
@@ -39,7 +39,7 @@ namespace Zephyr
 		void Flush();
 
 	private:
-		void OnMouseMove(Vec2<int> pos);
+		void OnMouseMove(Vec2<float> pos);
 		void OnMouseEnter();
 		void OnMouseLeave();
 		void OnButtonPress(int button);
@@ -50,7 +50,7 @@ namespace Zephyr
 		void TrimBuffer(std::queue<T>& buffer);
 
 		static constexpr unsigned int bufferSize = 4u;
-		Vec2<int> pos;
+		Vec2<float> pos;
 		Vec2<float> wheelOffset;
 		bool leftPressed = false;
 		bool rightPressed = false;

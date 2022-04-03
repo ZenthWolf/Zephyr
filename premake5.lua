@@ -35,6 +35,7 @@ project "Zephyr"
 	includedirs
 	{
 		"%{prj.name}/src",
+		"%{prj.name}/src/%{prj.name}",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}"
 	}

@@ -22,7 +22,7 @@
     <ClInclude Include="src\Zephyr\EntryPoint.h">
       <Filter>Zephyr</Filter>
     </ClInclude>
-    <ClInclude Include="src\Zephyr\Events\ApplicationEvents.h">
+    <ClInclude Include="src\Zephyr\Events\ApplicationEvent.h">
       <Filter>Zephyr\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Zephyr\Events\Event.h">
