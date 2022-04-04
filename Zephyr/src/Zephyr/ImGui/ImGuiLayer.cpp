@@ -1,16 +1,15 @@
 #include "ZephyrPCH.h"
-#include "ImGuiLayer.h"
-
-#include "imgui.h"
-#include "Platform/OpenGL/ImGuiOpenGLRendererBackend.h"
 
 #include "Game.h"
+#include "ImGuiLayer.h"
+
 //hacky
+#include "imgui.h"
+#include "Platform/OpenGL/ImGuiOpenGLRendererBackend.h"
 #include "GLFW/glfw3.h"
 
 namespace Zephyr
 {
-
 	/**********************TEMP KEYMAP*********************/
     static ImGuiKey ImGui_ImplGlfw_KeyToImGuiKey(int key)
     {
@@ -168,8 +167,67 @@ namespace Zephyr
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}
 
+#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+
 	void ImGuiLayer::OnEvent(Event& e)
 	{
+        ZW_ENGINE_TRACE("[ImGui] Receiving event: {0}", e);
+        EventDispatcher dispatcher(e);
+        dispatcher.Dispatch<KeyPress>(BIND_EVENT_FN(ImGuiLayer::OnKeyPress));
+        dispatcher.Dispatch<KeyRelease>(BIND_EVENT_FN(ImGuiLayer::OnKeyRelease));
+        dispatcher.Dispatch<MouseMove>(BIND_EVENT_FN(ImGuiLayer::OnMouseMove));
+        dispatcher.Dispatch<MouseButtonPress>(BIND_EVENT_FN(ImGuiLayer::OnMousePress));
+        dispatcher.Dispatch<MouseButtonRelease>(BIND_EVENT_FN(ImGuiLayer::OnMouseRelease));
+        dispatcher.Dispatch<MouseScroll>(BIND_EVENT_FN(ImGuiLayer::OnMouseScroll));
 	}
+
+    bool ImGuiLayer::OnKeyPress(KeyPress& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.AddKeyEvent(ImGui_ImplGlfw_KeyToImGuiKey(e.GetKeyCode()), true);
+
+        return true;
+    }
+
+    bool ImGuiLayer::OnKeyRelease(KeyRelease& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.AddInputCharacter(e.GetKeyCode());
+        io.AddKeyEvent(ImGui_ImplGlfw_KeyToImGuiKey(e.GetKeyCode()), false);
+
+        return true;
+    }
+
+    bool ImGuiLayer::OnMouseMove(MouseMove& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.AddMousePosEvent(e.GetPos().X, e.GetPos().Y);
+
+        return true;
+    }
+
+    bool ImGuiLayer::OnMousePress(MouseButtonPress& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.AddMouseButtonEvent(e.GetMouseButton(), true);
+
+        return true;
+    }
+
+    bool ImGuiLayer::OnMouseRelease(MouseButtonRelease& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.AddMouseButtonEvent(e.GetMouseButton(), false);
+
+        return true;
+    }
+
+    bool ImGuiLayer::OnMouseScroll(MouseScroll& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.AddMouseWheelEvent(e.GetScroll().X, e.GetScroll().Y);
+
+        return true;
+    }
 
 }
