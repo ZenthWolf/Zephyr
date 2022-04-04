@@ -3,15 +3,19 @@
 #include "Game.h"
 #include "MainWindow.h"
 
-#include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 namespace Zephyr
 {
 
 #define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
 
+	Game* Game::s_Instance = nullptr;
+
 	Game::Game()
 	{
+		ZW_ENGINE_ASSERT(!s_Instance, "Game already exists!");
+		s_Instance = this;
 		window = std::unique_ptr<Window>(Window::Create());
 		//Direct Events to be handled by OnEvent
 		window->SetEventCallback(BIND_EVENT_FN(Game::OnEvent));

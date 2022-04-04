@@ -1,5 +1,7 @@
 #include "ZephyrPCH.h"
 
+#include "glad/glad.h"
+
 #include "Zephyr/Events/ApplicationEvent.h"
 #include "Zephyr/Events/KeyEvent.h"
 #include "Zephyr/Events/MouseEvent.h"
@@ -47,8 +49,15 @@ namespace Zephyr {
 			s_GLFWInitialized = true;
 		}
 
+		//Initialize GLFW, create OpenGL context
 		window = glfwCreateWindow((int)props.Width, (int)props.Height, data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(window);
+		
+		//Initialize Glad- get access to modern OpenGL
+		//Target glfw process address
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		ZW_ENGINE_ASSERT(status, "Failed to Initialize Glad.");
+
 		glfwSetWindowUserPointer(window, &data);
 		SetVSync(true);
 

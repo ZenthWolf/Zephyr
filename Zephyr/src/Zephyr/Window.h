@@ -15,8 +15,8 @@ namespace Zephyr
 		unsigned int Height;
 
 		WindowProperty(const std::string& title = "Zephyr Engine - (The Bitter Wind)",
-			unsigned int width = 800,
-			unsigned int height = 600)
+			unsigned int width = 1280,
+			unsigned int height = 720)
 			: Title(title), Width(width), Height(height)
 		{
 		}

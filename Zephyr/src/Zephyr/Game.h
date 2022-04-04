@@ -23,13 +23,16 @@ namespace Zephyr
 		void PushOverlay(Layer* overlay);
 		void PopOverlay(Layer* overlay);
 
-
+		inline static Game& Get() { return *s_Instance; }
+		inline Window& GetWindow() { return *window; }
 	private:
 		bool OnWindowClose(WindowClose& e);
 
 		std::unique_ptr<Window> window;
 		bool running = true;
 		LayerStack layerStack;
+
+		static Game* s_Instance;
 	};
 
 	//CLIENT to define

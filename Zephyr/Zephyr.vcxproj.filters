@@ -10,6 +10,9 @@
     <Filter Include="Zephyr\Events">
       <UniqueIdentifier>{2BA7DAB0-9767-56E7-60A2-9F64CC219BC3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Zephyr\ImGui">
+      <UniqueIdentifier>{91A387A8-7D06-174D-268C-4F0312CEE2CF}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\WindowsWindow.h">
@@ -37,6 +40,9 @@
     <ClInclude Include="src\Zephyr\Game.h">
       <Filter>Zephyr</Filter>
     </ClInclude>
+    <ClInclude Include="src\Zephyr\ImGui\ImGuiLayer.h">
+      <Filter>Zephyr\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Zephyr\Keyboard.h">
       <Filter>Zephyr</Filter>
     </ClInclude>
@@ -62,6 +68,7 @@
       <Filter>Zephyr</Filter>
     </ClInclude>
     <ClInclude Include="src\ZephyrPCH.h" />
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRendererBackend.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\WindowsWindow.cpp">
@@ -69,6 +76,9 @@
     </ClCompile>
     <ClCompile Include="src\Zephyr\Game.cpp">
       <Filter>Zephyr</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Zephyr\ImGui\ImGuiLayer.cpp">
+      <Filter>Zephyr\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Zephyr\Keyboard.cpp">
       <Filter>Zephyr</Filter>
@@ -89,5 +99,6 @@
       <Filter>Zephyr</Filter>
     </ClCompile>
     <ClCompile Include="src\ZephyrPCH.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRendererBackend.cpp" />
   </ItemGroup>
 </Project>

@@ -36,6 +36,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new DebugLayer());
+		PushOverlay(new Zephyr::ImGuiLayer());
 	}
 
 	~Sandbox()

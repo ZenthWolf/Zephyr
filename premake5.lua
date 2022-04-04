@@ -10,8 +10,12 @@ outputdir = "%{cfg.system}-%{cfg.architecture}-%{cfg.buildcfg}"
 --Include directories
 IncludeDir = {}
 IncludeDir["GLFW"] = "Zephyr/vendor/GLFW/include"
+IncludeDir["Glad"] = "Zephyr/vendor/Glad/include"
+IncludeDir["ImGui"] = "Zephyr/vendor/imgui"
 
 include "Zephyr/vendor/GLFW"
+include "Zephyr/vendor/Glad"
+include "Zephyr/vendor/imgui"
 
 --Project in Solution
 project "Zephyr"
@@ -37,12 +41,16 @@ project "Zephyr"
 		"%{prj.name}/src",
 		"%{prj.name}/src/%{prj.name}",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
+		"Glad",
 		"GLFW",
+		"ImGui",
 		"opengl32.lib"
 	}
 
@@ -57,7 +65,8 @@ project "Zephyr"
 		defines
 		{
 			"ZW_WINDOWS_PLATFORM",
-			"ZW_BUILD_DLL"
+			"ZW_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands

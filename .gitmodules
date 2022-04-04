@@ -4,3 +4,6 @@
 [submodule "Zephyr/vendor/GLFW"]
 	path = Zephyr/vendor/GLFW
 	url = https://github.com/ZenthWolf/glfw
+[submodule "Zephyr/vendor/imgui"]
+	path = Zephyr/vendor/imgui
+	url = https://github.com/ZenthWolf/imgui
