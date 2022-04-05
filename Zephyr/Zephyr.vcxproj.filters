@@ -4,6 +4,9 @@
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Zephyr">
       <UniqueIdentifier>{272D32E1-13CF-5CB7-FC89-700BE8CAE307}</UniqueIdentifier>
     </Filter>
@@ -15,6 +18,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRendererBackend.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\WindowsWindow.h">
       <Filter>Platform</Filter>
     </ClInclude>
@@ -68,9 +74,11 @@
       <Filter>Zephyr</Filter>
     </ClInclude>
     <ClInclude Include="src\ZephyrPCH.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRendererBackend.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRendererBackend.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\WindowsWindow.cpp">
       <Filter>Platform</Filter>
     </ClCompile>
@@ -99,6 +107,5 @@
       <Filter>Zephyr</Filter>
     </ClCompile>
     <ClCompile Include="src\ZephyrPCH.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRendererBackend.cpp" />
   </ItemGroup>
 </Project>

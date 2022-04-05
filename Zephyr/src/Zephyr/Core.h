@@ -12,9 +12,13 @@
 	#error Zephyr only supports Windows.
 #endif
 
+#ifdef ZW_DEBUG
+	#define ZW_ENABLE_ASSERTS
+#endif
+
 #ifdef ZW_ENABLE_ASSERTS
-#define ZW_ASSERT(x, ...) { if(!(x)) { HZ_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-#define ZW_ENGINE_ASSERT(x, ...) { if(!(x)) { HZ_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define ZW_ASSERT(x, ...) { if(!(x)) { ZW_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define ZW_ENGINE_ASSERT(x, ...) { if(!(x)) { ZW_ENGINE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 #else
 #define ZW_ASSERT(x, ...)
 #define ZW_ENGINE_ASSERT(x, ...)

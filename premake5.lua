@@ -13,9 +13,10 @@ IncludeDir["GLFW"] = "Zephyr/vendor/GLFW/include"
 IncludeDir["Glad"] = "Zephyr/vendor/Glad/include"
 IncludeDir["ImGui"] = "Zephyr/vendor/imgui"
 
-include "Zephyr/vendor/GLFW"
-include "Zephyr/vendor/Glad"
-include "Zephyr/vendor/imgui"
+group "Dependencies"
+	include "Zephyr/vendor/GLFW"
+	include "Zephyr/vendor/Glad"
+	include "Zephyr/vendor/imgui"
 
 --Project in Solution
 project "Zephyr"
@@ -57,8 +58,6 @@ project "Zephyr"
 	--Platform specifics
 	filter "system:windows"
 		cppdialect "C++14"
-		--Static linking of libraries
-		staticruntime "On"
 		--Windows SDK version
 		systemversion "latest"
 
@@ -78,23 +77,24 @@ project "Zephyr"
 	-- Use {cond1, cond2} for multiple filter conditions
 	filter "configurations:Debug"
 		defines "ZW_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "ZW_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "ZW_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-obj/" .. outputdir .. "/%{prj.name}")
@@ -119,8 +119,6 @@ project "Sandbox"
 	--Platform specifics
 	filter "system:windows"
 		cppdialect "C++14"
-		--Static linking of libraries
-		staticruntime "On"
 		--Windows SDK version
 		systemversion "latest"
 
@@ -133,15 +131,15 @@ project "Sandbox"
 	-- Use {cond1, cond2} for multiple filter conditions
 	filter "configurations:Debug"
 		defines "ZW_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "ZW_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "ZW_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
