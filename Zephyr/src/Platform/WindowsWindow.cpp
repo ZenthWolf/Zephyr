@@ -106,6 +106,14 @@ namespace Zephyr {
 			}
 		});
 
+		glfwSetCharCallback(window, [](GLFWwindow* windowGL, unsigned int key)
+		{
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(windowGL);
+
+			KeyType event(key);
+			data.EventCallback(event);
+		});
+
 		glfwSetMouseButtonCallback(window, [](GLFWwindow* windowGL, int button, int action, int mods)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(windowGL);

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Event.h"
-#include "Vec2.h"
+#include "Zephyr/Vec2.h"
 
 namespace Zephyr
 {

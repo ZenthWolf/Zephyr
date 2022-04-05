@@ -6,6 +6,7 @@
 //hacky
 #include "imgui.h"
 #include "Platform/OpenGL/ImGuiOpenGLRendererBackend.h"
+#include <glad/glad.h>
 #include "GLFW/glfw3.h"
 
 namespace Zephyr
@@ -167,35 +168,43 @@ namespace Zephyr
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}
 
-#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
-
 	void ImGuiLayer::OnEvent(Event& e)
 	{
+        //Right now, does not count as "handling" events, for debug purposes.
+
         ZW_ENGINE_TRACE("[ImGui] Receiving event: {0}", e);
         EventDispatcher dispatcher(e);
-        dispatcher.Dispatch<KeyPress>(BIND_EVENT_FN(ImGuiLayer::OnKeyPress));
-        dispatcher.Dispatch<KeyRelease>(BIND_EVENT_FN(ImGuiLayer::OnKeyRelease));
-        dispatcher.Dispatch<MouseMove>(BIND_EVENT_FN(ImGuiLayer::OnMouseMove));
-        dispatcher.Dispatch<MouseButtonPress>(BIND_EVENT_FN(ImGuiLayer::OnMousePress));
-        dispatcher.Dispatch<MouseButtonRelease>(BIND_EVENT_FN(ImGuiLayer::OnMouseRelease));
-        dispatcher.Dispatch<MouseScroll>(BIND_EVENT_FN(ImGuiLayer::OnMouseScroll));
+        dispatcher.Dispatch<KeyType>(ZW_BIND_EVENT_FN(ImGuiLayer::OnKeyType));
+        dispatcher.Dispatch<KeyPress>(ZW_BIND_EVENT_FN(ImGuiLayer::OnKeyPress));
+        dispatcher.Dispatch<KeyRelease>(ZW_BIND_EVENT_FN(ImGuiLayer::OnKeyRelease));
+        dispatcher.Dispatch<MouseMove>(ZW_BIND_EVENT_FN(ImGuiLayer::OnMouseMove));
+        dispatcher.Dispatch<MouseButtonPress>(ZW_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonPress));
+        dispatcher.Dispatch<MouseButtonRelease>(ZW_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonRelease));
+        dispatcher.Dispatch<MouseScroll>(ZW_BIND_EVENT_FN(ImGuiLayer::OnMouseScroll));
+        dispatcher.Dispatch<WindowResize>(ZW_BIND_EVENT_FN(ImGuiLayer::OnWindowResize));
 	}
+
+    bool ImGuiLayer::OnKeyType(KeyType& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.AddInputCharacter(e.GetKeyCode());
+        return false;
+    }
 
     bool ImGuiLayer::OnKeyPress(KeyPress& e)
     {
         ImGuiIO& io = ImGui::GetIO();
         io.AddKeyEvent(ImGui_ImplGlfw_KeyToImGuiKey(e.GetKeyCode()), true);
 
-        return true;
+        return false;
     }
 
     bool ImGuiLayer::OnKeyRelease(KeyRelease& e)
     {
         ImGuiIO& io = ImGui::GetIO();
-        io.AddInputCharacter(e.GetKeyCode());
         io.AddKeyEvent(ImGui_ImplGlfw_KeyToImGuiKey(e.GetKeyCode()), false);
 
-        return true;
+        return false;
     }
 
     bool ImGuiLayer::OnMouseMove(MouseMove& e)
@@ -203,23 +212,23 @@ namespace Zephyr
         ImGuiIO& io = ImGui::GetIO();
         io.AddMousePosEvent(e.GetPos().X, e.GetPos().Y);
 
-        return true;
+        return false;
     }
 
-    bool ImGuiLayer::OnMousePress(MouseButtonPress& e)
+    bool ImGuiLayer::OnMouseButtonPress(MouseButtonPress& e)
     {
         ImGuiIO& io = ImGui::GetIO();
         io.AddMouseButtonEvent(e.GetMouseButton(), true);
 
-        return true;
+        return false;
     }
 
-    bool ImGuiLayer::OnMouseRelease(MouseButtonRelease& e)
+    bool ImGuiLayer::OnMouseButtonRelease(MouseButtonRelease& e)
     {
         ImGuiIO& io = ImGui::GetIO();
         io.AddMouseButtonEvent(e.GetMouseButton(), false);
 
-        return true;
+        return false;
     }
 
     bool ImGuiLayer::OnMouseScroll(MouseScroll& e)
@@ -227,7 +236,17 @@ namespace Zephyr
         ImGuiIO& io = ImGui::GetIO();
         io.AddMouseWheelEvent(e.GetScroll().X, e.GetScroll().Y);
 
-        return true;
+        return false;
+    }
+
+    bool ImGuiLayer::OnWindowResize(WindowResize& e)
+    {
+        ImGuiIO& io = ImGui::GetIO();
+        io.DisplaySize = ImVec2(e.GetSize().X, e.GetSize().Y);
+        io.DisplayFramebufferScale = ImVec2(1.0f, 1.0f);
+        glViewport(0, 0, e.GetSize().X, e.GetSize().Y);
+
+        return false;
     }
 
 }

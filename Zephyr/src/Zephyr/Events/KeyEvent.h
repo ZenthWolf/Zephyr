@@ -70,4 +70,27 @@ namespace Zephyr
 		EVENT_CLASS_TYPE(KeyRelease)
 	};
 
+	class ZEPHYR_API KeyType : public KeyEvent
+	{
+	public:
+		KeyType()
+		{}
+
+		KeyType(char key)
+			:KeyEvent(key) {}
+
+		inline char GetKeyCode() const
+		{
+			return keycode;
+		}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyTypeEvent: " << keycode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyType)
+	};
 }

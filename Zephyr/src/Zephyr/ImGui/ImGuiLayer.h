@@ -1,10 +1,10 @@
 #pragma once
 #include "Zephyr/Layer.h"
 
-#include "Events/ApplicationEvent.h"
-#include "Events/Event.h"
-#include "Events/KeyEvent.h"
-#include "Events/MouseEvent.h"
+//Need Zephyr/ for client?
+#include "Zephyr/Events/ApplicationEvent.h"
+#include "Zephyr/Events/KeyEvent.h"
+#include "Zephyr/Events/MouseEvent.h"
 
 namespace Zephyr
 {
@@ -20,12 +20,14 @@ namespace Zephyr
 		void OnEvent(Event& e) override;
 
 	private:
+		bool OnKeyType(KeyType& e);
 		bool OnKeyPress(KeyPress& e);
 		bool OnKeyRelease(KeyRelease& e);
 		bool OnMouseMove(MouseMove& e);
-		bool OnMousePress(MouseButtonPress& e);
-		bool OnMouseRelease(MouseButtonRelease& e);
+		bool OnMouseButtonPress(MouseButtonPress& e);
+		bool OnMouseButtonRelease(MouseButtonRelease& e);
 		bool OnMouseScroll(MouseScroll& e);
+		bool OnWindowResize(WindowResize& e);
 
 		float time = 0.0f;
 	};

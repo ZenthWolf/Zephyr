@@ -7,9 +7,6 @@
 
 namespace Zephyr
 {
-
-#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
-
 	Game* Game::s_Instance = nullptr;
 
 	Game::Game()
@@ -18,7 +15,7 @@ namespace Zephyr
 		s_Instance = this;
 		window = std::unique_ptr<Window>(Window::Create());
 		//Direct Events to be handled by OnEvent
-		window->SetEventCallback(BIND_EVENT_FN(Game::OnEvent));
+		window->SetEventCallback(ZW_BIND_EVENT_FN(Game::OnEvent));
 	}
 
 	Game::~Game()
@@ -28,7 +25,7 @@ namespace Zephyr
 	void Game::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowClose>(BIND_EVENT_FN(Game::OnWindowClose));
+		dispatcher.Dispatch<WindowClose>(ZW_BIND_EVENT_FN(Game::OnWindowClose));
 
 		for (auto it = layerStack.end(); it != layerStack.begin();)
 		{

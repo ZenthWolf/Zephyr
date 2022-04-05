@@ -10,7 +10,7 @@ namespace Zephyr
 		Invalid = -1,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
-		KeyPress, KeyRelease,
+		KeyPress, KeyRelease, KeyType,
 		MouseButtonPress, MouseButtonRelease, MouseMove, MouseScroll
 	};
 
