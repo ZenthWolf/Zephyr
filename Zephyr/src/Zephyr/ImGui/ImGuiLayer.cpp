@@ -196,6 +196,11 @@ namespace Zephyr
         ImGuiIO& io = ImGui::GetIO();
         io.AddKeyEvent(ImGui_ImplGlfw_KeyToImGuiKey(e.GetKeyCode()), true);
 
+        if(ImGui_ImplGlfw_KeyToImGuiKey(e.GetKeyCode())== ImGuiKey_None)
+        {
+            ZW_ENGINE_ERROR("Invalid Key: {0}", (int)e.GetKeyCode());
+        }
+
         return false;
     }
 

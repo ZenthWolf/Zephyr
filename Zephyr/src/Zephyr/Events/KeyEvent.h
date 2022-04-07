@@ -6,7 +6,7 @@ namespace Zephyr
 	class ZEPHYR_API KeyEvent : public Event
 	{
 	public:
-		inline char GetKeyCode() const
+		inline int GetKeyCode() const
 		{
 			return keycode;
 		}
@@ -17,10 +17,10 @@ namespace Zephyr
 		KeyEvent()
 			:keycode(-1) {}
 
-		KeyEvent(char key)
+		KeyEvent(int key)
 			:keycode(key) {}
 
-		const char keycode;
+		const int keycode;
 	};
 
 	class ZEPHYR_API KeyPress : public KeyEvent
@@ -29,7 +29,7 @@ namespace Zephyr
 		KeyPress()
 			:count(-1) {}
 
-		KeyPress(char key, int count)
+		KeyPress(int key, int count)
 			:KeyEvent(key), count(count) {}
 
 
@@ -57,7 +57,7 @@ namespace Zephyr
 		KeyRelease()
 		{}
 
-		KeyRelease(char key)
+		KeyRelease(int key)
 			:KeyEvent(key) {}
 
 		std::string ToString() const override
@@ -76,10 +76,10 @@ namespace Zephyr
 		KeyType()
 		{}
 
-		KeyType(char key)
+		KeyType(int key)
 			:KeyEvent(key) {}
 
-		inline char GetKeyCode() const
+		inline int GetKeyCode() const
 		{
 			return keycode;
 		}
